@@ -37,4 +37,13 @@ RSpec.describe Api::V1::ResistorsController, type: :controller do
     end
   end
 
+  describe "DELETE api/v1/resistors/id" do
+    it "Consegue excluir um resistor e retornar status 204?" do
+      resistor = Resistor.last
+      delete :destroy, params: {id: resistor.id}
+      expect(Resistor.all).not_to include(resistor)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
