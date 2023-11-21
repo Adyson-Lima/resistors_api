@@ -20,4 +20,12 @@ RSpec.describe Api::V1::ResistorsController, type: :controller do
     end
   end
 
+  describe "POST api/v1/resistors" do
+    it "Consegue criar um resistor e retornar status 201?" do
+      post :create, params: {resistor: {res_type: "pth", res_value: "50ohms"}, format: :json}
+      expect(response.body).to include_json(res_value: "50ohms")
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
