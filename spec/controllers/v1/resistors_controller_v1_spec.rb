@@ -28,4 +28,13 @@ RSpec.describe Api::V1::ResistorsController, type: :controller do
     end
   end
 
+  describe "PATCH api/v1/resistors/id" do
+    it "Consegue atualizar um resistor e retornar status 200?" do
+      resistor = Resistor.last
+      patch :update, params: {resistor: {res_type: "smd", res_value: "470ohms"}, id: resistor.id}
+      expect(response.body).to include_json(res_value: "470ohms")
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
