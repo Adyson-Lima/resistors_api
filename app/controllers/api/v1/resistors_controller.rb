@@ -1,6 +1,6 @@
 class Api::V1::ResistorsController < ApplicationController
 
-  before_action :set_resistor, only: %i[show] #show update destroy
+  before_action :set_resistor, only: %i[show update] #show update destroy
 
   def index
     @resistors = Resistor.all
@@ -15,6 +15,14 @@ class Api::V1::ResistorsController < ApplicationController
     @resistor = Resistor.new(resistor_params)
     if @resistor.save
       render json: @resistor, status: :created, location: api_v1_resistor_url(@resistor)
+    else
+      render json: @resistor.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @resistor.update(resistor_params)
+      render json: @resistor
     else
       render json: @resistor.errors, status: :unprocessable_entity
     end
