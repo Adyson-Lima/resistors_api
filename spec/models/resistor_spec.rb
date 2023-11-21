@@ -21,8 +21,8 @@ RSpec.describe Resistor, type: :model do
   describe "Teste de validação do model Resistor" do
 
     it "Resistor valido com campos obrigatorios preenchidos?" do
-      @resistor.res_type = ""
-      @resistor.res_value = ""
+      @resistor.res_type = "pth"
+      @resistor.res_value = "1k"
       expect(@resistor).to be_valid
     end
 
