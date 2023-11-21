@@ -26,6 +26,11 @@ RSpec.describe Resistor, type: :model do
       expect(@resistor).to be_valid
     end
 
+    it "Resistor invalido com campos obrigatorios não preenchidos?" do
+      resistor = Resistor.new
+      expect(resistor).to be_valid
+    end
+
   end
 
 end
