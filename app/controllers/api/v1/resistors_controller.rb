@@ -1,6 +1,6 @@
 class Api::V1::ResistorsController < ApplicationController
 
-  before_action :set_resistor, only: %i[show update] #show update destroy
+  before_action :set_resistor, only: %i[show update destroy] #show update destroy
 
   def index
     @resistors = Resistor.all
@@ -26,6 +26,10 @@ class Api::V1::ResistorsController < ApplicationController
     else
       render json: @resistor.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @resistor.destroy!
   end
 
 private
