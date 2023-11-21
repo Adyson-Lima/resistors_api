@@ -7,7 +7,7 @@ RSpec.describe Resistor, type: :model do
   describe "Teste de preenchimento do model Resistor" do
 
     it "res_type consegue ser preenchido?" do
-      @resistor.res_type = ""
+      @resistor.res_type = "smd"
       expect(@resistor.res_type).to eq("smd")
     end
 
