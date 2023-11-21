@@ -1,10 +1,14 @@
 class Api::V1::ResistorsController < ApplicationController
 
-  before_action :set_resistor, only: %i[] #show update destroy
+  before_action :set_resistor, only: %i[show] #show update destroy
 
   def index
     @resistors = Resistor.all
     render json: @resistors
+  end
+
+  def show
+    render json: @resistor
   end
 
 private
