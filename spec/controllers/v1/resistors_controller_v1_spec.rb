@@ -12,4 +12,12 @@ RSpec.describe Api::V1::ResistorsController, type: :controller do
     end
   end
 
+  describe "GET api/v1/resistors/id" do
+    it "Consegue listar um resistor especifico e retornar status 200?" do
+      get :show, params: {id: @resistor.id}
+      expect(response.body).to include_json(id: @resistor.id)
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
