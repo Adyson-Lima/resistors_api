@@ -11,6 +11,11 @@ RSpec.describe Resistor, type: :model do
       expect(@resistor.res_type).to eq("smd")
     end
 
+    it "res_value consegue ser preenchido?" do
+      @resistor.res_value = ""
+      expect(@resistor.res_value).to eq("100ohms")
+    end
+
   end
 
 end
