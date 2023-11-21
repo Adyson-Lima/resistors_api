@@ -11,6 +11,15 @@ class Api::V1::ResistorsController < ApplicationController
     render json: @resistor
   end
 
+  def create
+    @resistor = Resistor.new(resistor_params)
+    if @resistor.save
+      render json: @resistor, status: :created, location: api_v1_resistor_url(@resistor)
+    else
+      render json: @resistor.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_resistor
